@@ -1,0 +1,10 @@
+<form (submit)="addGroup()">
+    <input name="group" type="text" placeholder="Name...." [(ngModel)]="groupName">
+    <button [disabled]="!groupName">Add</button>  
+</form>
+
+<ul>
+    @for (item of groups; track item) {
+        <li>{{ item }}</li>
+    }
+</ul>

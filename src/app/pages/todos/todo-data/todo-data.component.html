@@ -1,0 +1,19 @@
+@if(todo._id) {
+    <div>
+        <strong>Title: </strong>
+        <span>{{todo.title}}</span>
+    </div>
+    <div>
+        <strong>Description: </strong>
+        <span>{{todo.description}}</span>
+    </div>
+    <div>
+        <strong>Status: </strong>
+        <span>{{todo.status ? todo.status : 'Empty'}}</span>
+    </div>
+
+    <button (click)="clearItem()">Clear</button>
+    <a [routerLink]="todo._id">View details</a>
+} @else {
+    <p>No task selected</p>
+}

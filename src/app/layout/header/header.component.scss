@@ -1,0 +1,27 @@
+@import "../../../sass/colors";
+
+header {
+    height: 80px;
+    background-color: $primary-color;
+    color: #fff;
+
+    > strong {
+        font-size: 32px;
+        line-height: 80px;
+    }
+
+    > ul {
+        display: inline;
+        margin: 0;
+        padding: 0;
+
+        > li {
+            display: inline;
+            margin: 0 10px;
+
+            a {
+                color: white;
+            }
+        }
+    }
+}
