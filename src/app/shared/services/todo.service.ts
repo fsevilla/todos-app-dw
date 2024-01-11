@@ -28,9 +28,22 @@ export class TodoService {
     }
   ];
 
+  private selectedTodo: Todo = {
+    title: '',
+    description: ''
+  }
+
   constructor() { }
 
   getTodos(): Todo[] {
     return [...this.todos];
+  }
+
+  setTodo(todo: Todo) {
+    this.selectedTodo = {...todo};
+  }
+
+  getTodo(): Todo {
+    return this.selectedTodo;
   }
 }

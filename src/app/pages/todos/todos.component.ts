@@ -33,6 +33,7 @@ export class TodosComponent implements OnInit {
   doOnClick(todo: Todo) {
     console.log('Selected item: ', todo);
     this.selectedItem = todo;
+    this.todoService.setTodo(this.selectedItem);
   }
 
   clearSelectedItem(todo: Todo) {
