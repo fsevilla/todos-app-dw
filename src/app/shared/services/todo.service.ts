@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 import { Todo } from '../interfaces/todo';
 
@@ -33,10 +35,11 @@ export class TodoService {
     description: ''
   }
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
 
-  getTodos(): Todo[] {
-    return [...this.todos];
+  getTodos(): Observable<Todo[]> {
+    const url = 'https://simple-todos.onrender.com/api/tareas';
+    return this.httpClient.get<Todo[]>(url);
   }
 
   setTodo(todo: Todo) {

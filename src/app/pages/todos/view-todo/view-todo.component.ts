@@ -41,4 +41,3 @@ export class ViewTodoComponent implements OnInit {
   }
 
 }
-

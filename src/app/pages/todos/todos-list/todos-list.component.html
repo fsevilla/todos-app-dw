@@ -1,0 +1,31 @@
+<a routerLink="new">New Todo</a>
+
+@if(isLoading) {
+    <p>Loading....</p>
+} @else {
+    @if(isError) {
+        <p>Something went wrong!</p>
+    } @else {
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (item of todos; track item._id) {
+                    <tr [ngClass]="{'active': item._id === selectedItem._id}" (click)="doOnClick(item)">
+                        <td>{{ item._id }}</td>
+                        <td>{{ item.title }}</td>
+                        <td [innerHTML]="item.description"></td>
+                        <td>{{ item.status }}</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <app-todo-data [todo]="selectedItem" (onClear)="clearSelectedItem($event)"></app-todo-data>
+    }
+}
