@@ -28,7 +28,7 @@ export class NewTodoComponent {
     private activatedRoute: ActivatedRoute
   ) {
     this.form = formBuilder.group({
-      title: ['', Validators.required, Validators.minLength(3)],
+      title: ['', [Validators.required, Validators.minLength(3)]],
       description: ['', Validators.required],
       status: 'done'
     });
