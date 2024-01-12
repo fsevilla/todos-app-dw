@@ -35,11 +35,12 @@ export class TodoService {
     description: ''
   }
 
+  private url = 'https://simple-todos.onrender.com/api/tareas';
+
   constructor(private httpClient: HttpClient) { }
 
   getTodos(): Observable<Todo[]> {
-    const url = 'https://simple-todos.onrender.com/api/tareas';
-    return this.httpClient.get<Todo[]>(url);
+    return this.httpClient.get<Todo[]>(this.url);
   }
 
   setTodo(todo: Todo) {
@@ -48,5 +49,9 @@ export class TodoService {
 
   getTodo(): Todo {
     return this.selectedTodo;
+  }
+
+  createTodo(todo: Todo): Observable<Todo> {
+    return this.httpClient.post<Todo>(this.url, todo);
   }
 }

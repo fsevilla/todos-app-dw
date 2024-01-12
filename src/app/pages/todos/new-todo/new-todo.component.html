@@ -1,16 +1,16 @@
-<form>
-    <h3>New Todo</h3>
+<form [formGroup]="form" (submit)="createTodo()">
+    <h3>New Todo</h3> valid? {{form.valid}}
     <div>
         <label for="title">Title: </label>
-        <input type="text" name="title">
+        <input type="text" name="title" formControlName="title">
     </div>
     <div>
         <label for="description">Description: </label>
-        <textarea name="description"></textarea>
+        <textarea name="description" formControlName="description"></textarea>
     </div>
     <div>
         <label for="status">Status: </label>
-        <select name="status">
+        <select name="status" formControlName="status">
             <option value="">Select an option</option>
             <option value="new">New</option>
             <option value="in progress">In Progress</option>
@@ -18,7 +18,7 @@
         </select>
     </div>
     <div>
-        <button>Cancel</button>
-        <button>Create</button>
+        <a routerLink="..">Cancel</a>
+        <button [disabled]="form.invalid">Create</button>
     </div>
 </form>
