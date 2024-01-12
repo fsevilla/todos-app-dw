@@ -1,0 +1,15 @@
+<form (submit)="login()">
+    <h3>Login</h3>
+    <div>
+        <label for="email">Email: </label>
+        <input type="email" name="email">
+    </div>
+    <div>
+        <label for="password">Password: </label>
+        <input type="password" name="password">
+    </div>
+    <div>
+        <button>Log in</button>
+        <p>Not a user? <a routerLink="/signup">signup here</a></p>
+    </div>
+</form>

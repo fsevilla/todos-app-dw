@@ -7,6 +7,7 @@ import { ViewTodoComponent } from './pages/todos/view-todo/view-todo.component';
 import { NewTodoComponent } from './pages/todos/new-todo/new-todo.component';
 import { TodosListComponent } from './pages/todos/todos-list/todos-list.component';
 import { SignupComponent } from './pages/signup/signup.component';
+import { LoginComponent } from './pages/login/login.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' }, 
@@ -17,6 +18,7 @@ export const routes: Routes = [
         { path: ':id', component: ViewTodoComponent }
     ] },
     { path: 'signup', component: SignupComponent },
+    { path: 'login', component: LoginComponent },
     { path: '**', component: NotFoundComponent }
 ];
 

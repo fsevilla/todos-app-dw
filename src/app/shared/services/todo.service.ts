@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+import { environment } from '../../../environments/environment';
+
 import { Todo } from '../interfaces/todo';
 
 @Injectable({
@@ -35,12 +37,11 @@ export class TodoService {
     description: ''
   }
 
-  private url = 'https://simple-todos.onrender.com/api/tareas';
-
   constructor(private httpClient: HttpClient) { }
 
   getTodos(): Observable<Todo[]> {
-    return this.httpClient.get<Todo[]>(this.url);
+    const url = environment.apiUrl + 'tareas';
+    return this.httpClient.get<Todo[]>(url);
   }
 
   setTodo(todo: Todo) {
@@ -52,6 +53,7 @@ export class TodoService {
   }
 
   createTodo(todo: Todo): Observable<Todo> {
-    return this.httpClient.post<Todo>(this.url, todo);
+    const url = environment.apiUrl + 'tareas';
+    return this.httpClient.post<Todo>(url, todo);
   }
 }
