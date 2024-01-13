@@ -1,16 +1,23 @@
 import { Injectable } from '@angular/core';
 
+import { BehaviorSubject } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
 export class TokenService {
 
+  sessionStatus: BehaviorSubject<boolean> = new BehaviorSubject(false);
+
   private tokenKey = 'token';
 
-  constructor() { }
+  constructor() {
+    this.sessionStatus.next(this.tokenExists());
+  }
 
   saveToken(token: string): void {
     localStorage.setItem(this.tokenKey, token);
+    this.sessionStatus.next(true);
   }
 
   getToken(): string {
@@ -23,5 +30,6 @@ export class TokenService {
 
   clearToken() {
     localStorage.removeItem(this.tokenKey);
+    this.sessionStatus.next(false);
   }
 }

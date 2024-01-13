@@ -1,47 +1,36 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
 
 import { Todo } from '../interfaces/todo';
+import { TokenService } from './token.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TodoService {
 
-  private todos: Todo[] = [
-    {
-      _id: '1',
-      title: 'Tarea 1',
-      description: 'descripcion de la tarea 1',
-      status: 'new'
-    },
-    {
-      _id: '2',
-      title: 'Tarea 2',
-      description: 'descripcion de la tarea 2',
-      status: 'in progress'
-    },
-    {
-      _id: '3',
-      title: 'Tarea 3',
-      description: 'descripcion de la tarea 3',
-      status: 'done'
-    }
-  ];
-
   private selectedTodo: Todo = {
     title: '',
     description: ''
   }
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private tokenService: TokenService) { }
+
+  private getHeaders() {
+    const headers: HttpHeaders = new HttpHeaders({
+      'Authorization': this.tokenService.getToken()
+    });
+
+    return headers;
+  }
 
   getTodos(): Observable<Todo[]> {
     const url = environment.apiUrl + 'todos';
-    return this.httpClient.get<Todo[]>(url);
+    const headers = this.getHeaders();
+    return this.httpClient.get<Todo[]>(url, { headers });
   }
 
   setTodo(todo: Todo) {
@@ -54,6 +43,7 @@ export class TodoService {
 
   createTodo(todo: Todo): Observable<Todo> {
     const url = environment.apiUrl + 'todos';
-    return this.httpClient.post<Todo>(url, todo);
+    const headers = this.getHeaders();
+    return this.httpClient.post<Todo>(url, todo, { headers });
   }
 }

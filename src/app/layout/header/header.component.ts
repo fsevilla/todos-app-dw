@@ -12,7 +12,13 @@ import { TokenService } from '../../shared/services/token.service';
 })
 export class HeaderComponent {
 
-  constructor(private tokenService: TokenService, private router: Router) {}
+  isLoggedIn = false;
+
+  constructor(private tokenService: TokenService, private router: Router) {
+    this.tokenService.sessionStatus.subscribe((status: boolean) => {
+      this.isLoggedIn = status;
+    });
+  }
 
   logout() {
     this.tokenService.clearToken();
