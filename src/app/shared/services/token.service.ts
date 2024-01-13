@@ -20,4 +20,8 @@ export class TokenService {
   tokenExists(): boolean {
     return this.getToken() ? true : false;
   }
+
+  clearToken() {
+    localStorage.removeItem(this.tokenKey);
+  }
 }

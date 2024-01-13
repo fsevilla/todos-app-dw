@@ -19,13 +19,18 @@ export class LoginComponent {
     password: ''
   }
 
-  constructor(private loginService: LoginService, private tokenService: TokenService) {}
+  constructor(
+    private loginService: LoginService, 
+    private tokenService: TokenService,
+    private router: Router
+  ) {}
 
   login() {
     this.loginService.login(this.credentials).subscribe({
       next: (response) => {
         console.log('Response: ', response);
         this.tokenService.saveToken(response.token);
+        this.router.navigate(['']);
       },
       error:(e) => {
         console.log('Login error": ', e);
