@@ -40,7 +40,7 @@ export class TodoService {
   constructor(private httpClient: HttpClient) { }
 
   getTodos(): Observable<Todo[]> {
-    const url = environment.apiUrl + 'tareas';
+    const url = environment.apiUrl + 'todos';
     return this.httpClient.get<Todo[]>(url);
   }
 
@@ -53,7 +53,7 @@ export class TodoService {
   }
 
   createTodo(todo: Todo): Observable<Todo> {
-    const url = environment.apiUrl + 'tareas';
+    const url = environment.apiUrl + 'todos';
     return this.httpClient.post<Todo>(url, todo);
   }
 }

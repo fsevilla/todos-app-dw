@@ -14,7 +14,7 @@ export class LoginService {
   constructor(private httpClient: HttpClient) { }
 
   login(credentials: Credentials): Observable<TokenResponse> {
-    const url = environment.apiUrl + 'login';
+    const url = environment.apiUrl + 'auth';
     return this.httpClient.post<TokenResponse>(url, credentials);
   }
 }

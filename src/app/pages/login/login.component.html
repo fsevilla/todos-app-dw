@@ -2,11 +2,11 @@
     <h3>Login</h3>
     <div>
         <label for="email">Email: </label>
-        <input type="email" name="email">
+        <input type="email" name="email" [(ngModel)]="credentials.email">
     </div>
     <div>
         <label for="password">Password: </label>
-        <input type="password" name="password">
+        <input type="password" name="password" [(ngModel)]="credentials.password">
     </div>
     <div>
         <button>Log in</button>
