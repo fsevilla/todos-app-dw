@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
 
+import { MatToolbarModule } from '@angular/material/toolbar';
+
+
 import { TokenService } from '../../shared/services/token.service';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule, MatToolbarModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })

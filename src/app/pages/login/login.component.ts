@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Router } from '@angular/router';
+
+import { MatButtonModule } from '@angular/material/button';
+
+
 import { Credentials } from '../../shared/interfaces/credentials';
 import { LoginService } from '../../shared/services/login.service';
 import { TokenService } from '../../shared/services/token.service';
@@ -8,7 +12,7 @@ import { TokenService } from '../../shared/services/token.service';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, RouterModule],
+  imports: [FormsModule, RouterModule, MatButtonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
